@@ -41,6 +41,7 @@ int Input(){
 	Box.push(Graph[my_place.first][my_place.second]);
 	Graph[my_place.first][my_place.second]=-1;
 	place_of[Box.top()] = make_pair(-1,-1);
+	ans.push_back('I');
 	return 0;
 }
 int Output(){
@@ -49,6 +50,7 @@ int Output(){
 	int x = my_place.first;int y = my_place.second;
 	Graph[x][y] = out;
 	place_of[out] = make_pair(x,y);
+	ans.push_back('I');
 	return 0;
 }
 
@@ -61,4 +63,5 @@ int main()
 		Graph[x][y]=i;
 		place_of[i] = make_pair(x,y);
 	}
+	
 }
