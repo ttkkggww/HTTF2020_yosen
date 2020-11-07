@@ -142,13 +142,20 @@ int main()
 	
 	Input();
 	for(int i=0;i<10;i++){
-		for(int j = 0;j<9;j++){
-			Input();
-			if(i%2)Left();
-			else Right();
-		}
+		Input();
+		int to[2];
+		to[0] = Exist_to_size("Left");
+		to[1] = Exist_to_size("Right");
+		int flg = to[0]>to[1];//flg==1のとき、左が大きいので右から回収する
+		for(int i = 0;i<to[0+flg];i++){if(flg==0)Left();else Right();Input();}
+		for(int i = 0;i<to[0+flg];i++){if(flg==1)Left();else Right();}
+		for(int i = 0;i<to[1-flg];i++){if(flg==1)Left();else Right();Input();}
 		Input();
 		Down();
+	}
+	while(my_place.second>10){
+		Output();
+		Left();
 	}
 
 	for(int i=0;i<10;i++){
@@ -160,8 +167,10 @@ int main()
 		Output();
 		Down();
 	}
+	//cout<<ans<<endl;return 0;
 
 	for(int aim = 0;aim<100;aim++){
+		//cout<<place_of[aim].first<<' '<<place_of[aim].second<<endl;
 		while(place_of[aim]!=my_place){
 			if(place_of[aim].first>my_place.first)Down();
 			if(place_of[aim].first<my_place.first)Up();
